@@ -125,9 +125,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //Commons.hideProgressDialog();
         switch (username){
             case "09064190555":
+                PreferenceHelper.setCurrentNo("09064190555");
                 PreferenceHelper.setTempLoginID(ConfigHelper.ACCOUNT_KIRA);
                 break;
             case "09061234445":
+                PreferenceHelper.setCurrentNo("09061234445");
                 PreferenceHelper.setTempLoginID(ConfigHelper.ACCOUNT_ERWIN);
                 break;
         }
