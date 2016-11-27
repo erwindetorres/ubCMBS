@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -31,6 +32,7 @@ import project.weabank.com.ubcmbs.fragments.WithdrawFragment;
 import project.weabank.com.ubcmbs.helpers.CircleTransform;
 import project.weabank.com.ubcmbs.helpers.CustomFragmentManager;
 import project.weabank.com.ubcmbs.helpers.DummyContent;
+import project.weabank.com.ubcmbs.helpers.PreferenceHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
         View navHeader = getLayoutInflater().inflate(R.layout.nav_header, drawerListView, false);
         ImageView imageProfile = (ImageView) navHeader.findViewById(R.id.navImage);
+        TextView tvMsisdn = (TextView) navHeader.findViewById(R.id.navMobileNumber);
+        tvMsisdn.setText(String.valueOf(PreferenceHelper.getTempLoginID()));
         Picasso.with(MainActivity.this)
                 .load(DummyContent.getRandomProfileDrawable())
                 .placeholder(R.drawable.bg_circle)
@@ -97,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         drawerListView.setAdapter(drawerAdapter);
 
         drawerListView.setOnItemClickListener(new NavigationDrawerItemClickListener());
-        drawerListView.setBackgroundResource(R.drawable.background_media);
+        drawerListView.setBackgroundResource(R.drawable.login_travel);
         drawerListView.getLayoutParams().width = (int) getResources().getDimension(R.dimen.drawer_width_media);
 
         final LinearLayout page = (LinearLayout) findViewById(R.id.contentpage);
@@ -192,6 +196,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.getInstance(), "Settings", Toast.LENGTH_SHORT).show();
                     break;
                 case 6:
+                    PreferenceHelper.setTempLoginID("");
+                    PreferenceHelper.setCurrentNo("");
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();

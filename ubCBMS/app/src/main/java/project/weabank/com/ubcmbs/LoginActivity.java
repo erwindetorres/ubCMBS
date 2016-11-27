@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import project.weabank.com.ubcmbs.helpers.Commons;
+import project.weabank.com.ubcmbs.helpers.ConfigHelper;
+import project.weabank.com.ubcmbs.helpers.PreferenceHelper;
 
 /**
  * Created by Kira on 11/26/2016.
@@ -121,6 +123,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void initLogin(String username, String pass){
         //Commons.hideProgressDialog();
+        switch (username){
+            case "09064190555":
+                PreferenceHelper.setTempLoginID(ConfigHelper.ACCOUNT_KIRA);
+                break;
+            case "09061234445":
+                PreferenceHelper.setTempLoginID(ConfigHelper.ACCOUNT_ERWIN);
+                break;
+        }
+        PreferenceHelper.setCurrentNo(username);
         Intent i =  new Intent(LoginActivity.this, MainActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);

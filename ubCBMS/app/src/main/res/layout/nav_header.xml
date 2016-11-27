@@ -36,7 +36,7 @@
             />
 
         <TextView
-            android:id="@+id/navEmail"
+            android:id="@+id/navMobileNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="thenapster.project@gmail.com"

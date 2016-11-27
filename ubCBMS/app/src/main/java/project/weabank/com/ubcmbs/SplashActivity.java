@@ -2,6 +2,7 @@ package project.weabank.com.ubcmbs;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,11 +19,13 @@ public class SplashActivity extends AppCompatActivity {
     private View decorView;
     private static SplashActivity _instance;
     private ImageView splashLogo;
+    private static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         splashLogo = (ImageView) findViewById(R.id.logo);
+        context = getApplicationContext();
         initAnimation();
 
         new Handler().postDelayed(new Runnable() {
@@ -30,8 +33,12 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Login();
             }
-        },4000);
+        },3000);
 
+    }
+
+    public static Context SplashContext(){
+        return context;
     }
 
     private void Login(){
